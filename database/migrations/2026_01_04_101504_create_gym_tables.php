@@ -12,52 +12,47 @@ return new class extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('phone')->unique(); // No HP jadi kunci utama (wajib unik)
+            $table->string('phone')->unique(); 
             $table->date('join_date'); 
-            $table->date('expiry_date')->nullable(); // Tanggal masa aktif habis
-            $table->timestamps(); // Mencatat kapan dibuat/diedit
+            $table->date('expiry_date')->nullable(); 
+            $table->timestamps(); 
         });
 
         // 2. Tabel Transaksi (Keuangan)
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            // Member ID boleh kosong (NULL) jika transaksinya adalah "Harian" atau "Beli Minum Orang Lewat"
             $table->foreignId('member_id')->nullable()->constrained('members')->onDelete('cascade');
-            
-            // Jenis transaksi sesuai request kamu
-            $table->enum('type', [
-                'registration', // Daftar Baru (135k)
-                'renewal',      // Perpanjang (100k)
-                'daily_visit',  // Harian (15k)
-                'retail'        // Jual Air/Susu
-            ]);
-            
-            $table->decimal('amount', 10, 2); // Jumlah uang
-            $table->text('notes')->nullable(); // Catatan (misal: "Susu Kedelai 2 pcs")
-            $table->timestamps(); // Otomatis mencatat tgl transaksi
+            $table->string('type'); // Tipe transaksi (string biasa)
+            $table->decimal('amount', 15, 2); 
+            $table->text('notes')->nullable(); 
+            $table->timestamps(); 
         });
 
         // 3. Tabel Absensi (Logbook Digital)
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('member_id')->constrained('members')->onDelete('cascade');
-            $table->timestamp('check_in_time'); // Jam datang
+            $table->timestamp('check_in_time'); 
+            // Opsional: tambahkan timestamps() jika ingin track created_at/updated_at juga
+            $table->timestamps(); 
         });
 
-        // 4. Tabel Bagian Tubuh (Untuk Panduan Latihan)
+        // 4. Tabel Bagian Tubuh (Perbaikan: Tambah timestamps)
         Schema::create('body_parts', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // Dada, Punggung, Kaki, dll
+            $table->string('name'); 
             $table->string('image')->nullable();
+            $table->timestamps(); // <--- BARIS INI KEMARIN HILANG
         });
 
-        // 5. Tabel Latihan (List Alat/Gerakan)
+        // 5. Tabel Latihan (Perbaikan: Tambah timestamps)
         Schema::create('exercises', function (Blueprint $table) {
             $table->id();
             $table->foreignId('body_part_id')->constrained('body_parts')->onDelete('cascade');
-            $table->string('name'); // Misal: Bench Press
-            $table->text('description')->nullable(); // Cara pakai
-            $table->string('video_url')->nullable(); // Link video/gif
+            $table->string('name'); 
+            $table->text('description')->nullable(); 
+            $table->string('video_url')->nullable(); 
+            $table->timestamps(); // <--- BARIS INI KEMARIN HILANG
         });
     }
 

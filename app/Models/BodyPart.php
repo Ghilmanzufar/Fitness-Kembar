@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class BodyPart extends Model
 {
     use HasFactory;
+    
+    protected $guarded = ['id']; // <--- Tambahkan ini
 
-    // Satu Bagian Tubuh punya BANYAK Latihan
     public function exercises()
     {
         return $this->hasMany(Exercise::class);

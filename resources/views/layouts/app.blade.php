@@ -61,6 +61,7 @@
                         <li><a href="{{ route('home') }}" class="block py-2 px-3 transition text-sm tracking-wide uppercase font-semibold {{ request()->routeIs('home') ? 'text-red-500' : 'text-white hover:text-red-500' }}">Beranda</a></li>
                         <li><a href="{{ route('guide') }}" class="block py-2 px-3 transition text-sm tracking-wide uppercase font-semibold {{ request()->routeIs('guide') ? 'text-red-500' : 'text-white hover:text-red-500' }}">Panduan</a></li>
                         <li><a href="{{ route('gallery') }}" class="block py-2 px-3 transition text-sm tracking-wide uppercase font-semibold {{ request()->routeIs('gallery') ? 'text-red-500' : 'text-white hover:text-red-500' }}">Galery</a></li>
+                        <li><a href="{{ route('public.checkin') }}" class="block py-2 px-3 transition text-sm tracking-wide uppercase font-semibold {{ request()->routeIs('public.checkin') ? 'text-red-500' : 'text-white hover:text-red-500' }}">Check-In</a></li>
                         <li>
                             <a href="{{ route('admin.dashboard') }}" class="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-full text-sm font-bold transition transform hover:scale-105 shadow-lg shadow-red-900/50">
                                 LOGIN ADMIN

@@ -19,7 +19,15 @@
         </div>
     </section>
 
-    <section x-data="{ activeTab: 'all', searchQuery: '' }" class="min-h-screen bg-slate-950 px-4 pb-20 border-t border-white/5">
+    <section x-data="{ 
+                activeTab: 'all', 
+                searchQuery: '',
+                videoModal: false,
+                videoSrc: '',
+                videoTitle: '',
+                videoDesc: ''
+             }" 
+             class="min-h-screen bg-slate-950 px-4 pb-20 border-t border-white/5">
         
         <div class="max-w-screen-xl mx-auto -mt-8 relative z-20">
             
@@ -62,9 +70,9 @@
                              class="bg-slate-900 border border-white/5 rounded-xl overflow-hidden hover:border-red-600/50 hover:shadow-lg hover:shadow-red-900/10 transition group">
                             
                             <div class="h-48 bg-slate-800 relative group cursor-pointer overflow-hidden">
-                                <img src="https://source.unsplash.com/random/800x600/?gym,{{ str_replace(' ', '', $part->name) }}" 
-                                     class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-500" 
-                                     alt="Latihan">
+                                <img src="{{ $exercise->image ? asset('storage/' . $exercise->image) : 'https://loremflickr.com/800/600/gym,fitness/all?lock=' . $exercise->id }}" 
+                                    class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-500" 
+                                    alt="{{ $exercise->name }}">
                                 
                                 <div class="absolute inset-0 flex items-center justify-center">
                                     <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center pl-1 shadow-xl group-hover:scale-110 transition">
@@ -83,7 +91,11 @@
                                     {{ $exercise->description }}
                                 </p>
                                 
-                                <button class="w-full py-2 border border-white/20 rounded-lg text-white text-sm hover:bg-white hover:text-black transition font-semibold uppercase tracking-wide">
+                                <button @click="videoModal = true; 
+                                                videoSrc = '{{ $exercise->embed_url }}'; 
+                                                videoTitle = '{{ $exercise->name }}'; 
+                                                videoDesc = '{{ $exercise->description }}'"
+                                        class="w-full py-2 border border-white/20 rounded-lg text-white text-sm hover:bg-white hover:text-black transition font-semibold uppercase tracking-wide">
                                     Lihat Detail & Video
                                 </button>
                             </div>
@@ -101,6 +113,43 @@
             </div>
 
         </div>
+
+        <div x-show="videoModal" 
+             style="display: none;"
+             class="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 scale-90"
+             x-transition:enter-end="opacity-100 scale-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100 scale-100"
+             x-transition:leave-end="opacity-0 scale-90">
+
+            <div class="bg-slate-900 w-full max-w-4xl rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex flex-col" 
+                 @click.away="videoModal = false; videoSrc = ''">
+                
+                <div class="p-4 flex justify-between items-center border-b border-white/10">
+                    <h3 x-text="videoTitle" class="text-xl font-bold text-white font-oswald uppercase"></h3>
+                    <button @click="videoModal = false; videoSrc = ''" class="text-gray-400 hover:text-white transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+
+                <div class="aspect-video w-full bg-black">
+                    <iframe :src="videoModal ? videoSrc : ''" 
+                            class="w-full h-full" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="p-6 bg-slate-800">
+                    <h4 class="text-sm font-bold text-gray-400 uppercase mb-2">Tips / Cara Melakukan:</h4>
+                    <p x-text="videoDesc" class="text-white leading-relaxed text-sm md:text-base"></p>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <section class="py-16 bg-slate-900 text-center border-t border-white/5">

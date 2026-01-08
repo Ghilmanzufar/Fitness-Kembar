@@ -4,12 +4,21 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        // 0. BUAT AKUN ADMIN (Password: password)
+        DB::table('users')->insert([
+            'name' => 'Owner Majapahit',
+            'email' => 'admin@gym.com',
+            'password' => Hash::make('password'), // Password terenkripsi
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
         // 1. DATA MEMBER (ANGGOTA)
         // Member 1: Masih Aktif (Budi Santoso)
         $member1 = DB::table('members')->insertGetId([

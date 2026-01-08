@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 use App\Models\BodyPart;
 
@@ -14,7 +15,8 @@ class HomeController extends Controller
 
     public function gallery()
     {
-        return view('home.gallery'); // Kita akan buat file ini nanti
+        $galleries = Gallery::latest()->get();
+        return view('home.gallery', compact('galleries'));
     }
 
     public function guide()

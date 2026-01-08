@@ -66,4 +66,38 @@ class MemberController extends Controller
         $member->delete();
         return redirect()->route('members.index')->with('success', 'Data member dihapus.');
     }
+
+    // 5. Proses Perpanjang Member
+    public function renew(Request $request, $id)
+    {
+        $request->validate([
+            'duration' => 'required|in:1,3,6,12', // Pilihan bulan
+        ]);
+
+        $member = Member::findOrFail($id);
+
+        // LOGIKA PENENTUAN TANGGAL:
+        // Jika member masih aktif, tambah dari tanggal expired lama.
+        // Jika member sudah expired, tambah dari HARI INI.
+        $startDate = $member->expiry_date > Carbon::now() ? $member->expiry_date : Carbon::now();
+        $newExpiryDate = $startDate->copy()->addMonths($request->duration);
+
+        // Update Data Member
+        $member->update([
+            'expiry_date' => $newExpiryDate
+        ]);
+
+        // Hitung Biaya (Flat 100rb per bulan sesuai request awal)
+        $biaya = 100000 * $request->duration;
+
+        // Catat Transaksi (Supaya Omset Nambah)
+        Transaction::create([
+            'member_id' => $member->id,
+            'type' => 'renewal', // Tipe Renewal
+            'amount' => $biaya,
+            'notes' => 'Perpanjang Paket ' . $request->duration . ' Bulan',
+        ]);
+
+        return redirect()->back()->with('success', 'Masa aktif ' . $member->name . ' berhasil diperpanjang!');
+    }
 }

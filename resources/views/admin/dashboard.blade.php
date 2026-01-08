@@ -6,10 +6,10 @@
             <h1 class="text-3xl font-bold font-oswald text-white mb-1">Dashboard Owner</h1>
             <p class="text-gray-400 text-sm">Selamat datang kembali, pantau performa gym hari ini.</p>
         </div>
-        <button class="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold shadow-lg shadow-red-900/30 transition flex items-center gap-2">
+        <a href="{{ route('transactions.index') }}" class="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold shadow-lg shadow-red-900/30 transition flex items-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
             Transaksi Baru
-        </button>
+        </a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
@@ -51,7 +51,9 @@
     <div class="bg-slate-800 border border-white/5 rounded-2xl shadow-xl overflow-hidden">
         <div class="p-6 border-b border-white/5 flex justify-between items-center">
             <h3 class="text-xl font-bold text-white font-oswald">Transaksi Terakhir</h3>
-            <a href="#" class="text-sm text-red-500 hover:text-red-400">Lihat Semua</a>
+            <a href="{{ route('reports.index') }}" class="text-sm text-red-500 hover:text-red-400 transition font-bold">
+                Lihat Semua &rarr;
+            </a>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left text-gray-400">
