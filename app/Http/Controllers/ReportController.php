@@ -42,4 +42,34 @@ class ReportController extends Controller
             'year'
         ));
     }
+
+    // LAPORAN MEMBER BARU
+    public function members(Request $request)
+    {
+        // Default: Bulan & Tahun ini
+        $month = $request->month ?? date('m');
+        $year = $request->year ?? date('Y');
+
+        // Ambil member yang JOIN pada bulan & tahun tersebut
+        $members = \App\Models\Member::whereMonth('join_date', $month)
+                                     ->whereYear('join_date', $year)
+                                     ->latest('join_date')
+                                     ->get();
+
+        return view('admin.reports.members', compact('members', 'month', 'year'));
+    }
+
+    // CETAK PDF MEMBER
+    public function printMembers(Request $request)
+    {
+        $month = $request->month;
+        $year = $request->year;
+
+        $members = \App\Models\Member::whereMonth('join_date', $month)
+                                     ->whereYear('join_date', $year)
+                                     ->orderBy('join_date', 'asc')
+                                     ->get();
+
+        return view('admin.reports.print_members', compact('members', 'month', 'year'));
+    }
 }

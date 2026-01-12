@@ -11,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\ReviewController;
 
 // ==========================
 // AREA PUBLIK (Bisa Diakses Siapa Saja)
@@ -27,6 +28,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Route Absen Mandiri (QR Code mengarah kesini)
 Route::get('/absen', [PublicController::class, 'showCheckIn'])->name('public.checkin');
 Route::post('/absen', [PublicController::class, 'processCheckIn'])->name('public.checkin.process');
+// 1. ROUTE PUBLIK (Bisa diakses siapa saja/member)
+Route::get('/review', [ReviewController::class, 'create'])->name('reviews.create');
+Route::post('/review', [ReviewController::class, 'store'])->name('reviews.store');
 
 // ==========================
 // AREA PRIVATE (Harus Login Dulu)
@@ -67,4 +71,12 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/attendances/print', [AttendanceController::class, 'printRecap'])->name('attendances.print');
 
     Route::resource('attendances', AttendanceController::class)->only(['index', 'store', 'destroy']);
+
+    // Laporan Member
+    Route::get('/reports/members', [App\Http\Controllers\ReportController::class, 'members'])->name('reports.members');
+    Route::get('/reports/members/print', [App\Http\Controllers\ReportController::class, 'printMembers'])->name('reports.members.print');
+
+    // Tambahkan ini:
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('admin.reviews.index');
+    Route::delete('/reviews/{review}', [ReviewController::class, 'destroy'])->name('admin.reviews.destroy');
 });

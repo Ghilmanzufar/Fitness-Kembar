@@ -26,7 +26,7 @@
                             <label class="cursor-pointer">
                                 <input type="radio" name="type" value="daily_visit" x-model="tipe" @change="updateHarga()" class="peer sr-only">
                                 <div class="p-3 rounded-lg border border-gray-600 peer-checked:bg-yellow-600 peer-checked:border-yellow-500 peer-checked:text-white text-gray-400 text-center transition hover:bg-slate-700">
-                                    <div class="font-bold text-sm">Harian</div>
+                                    <div class="font-bold text-sm">Member Harian</div>
                                 </div>
                             </label>
                             
