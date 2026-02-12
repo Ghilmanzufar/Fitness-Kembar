@@ -85,6 +85,7 @@
                     <li><a href="{{ route('home') }}" class="block py-3 px-4 rounded-lg font-semibold {{ request()->routeIs('home') ? 'bg-red-600 text-white' : 'text-white hover:bg-white/5' }}">Beranda</a></li>
                     <li><a href="{{ route('guide') }}" class="block py-3 px-4 rounded-lg font-semibold {{ request()->routeIs('guide') ? 'bg-red-600 text-white' : 'text-white hover:bg-white/5' }}">Panduan</a></li>
                     <li><a href="{{ route('gallery') }}" class="block py-3 px-4 rounded-lg font-semibold {{ request()->routeIs('gallery') ? 'bg-red-600 text-white' : 'text-white hover:bg-white/5' }}">Galery</a></li>
+                    <li><a href="{{ route('public.checkin') }}" class="block py-3 px-4 rounded-lg font-semibold {{ request()->routeIs('public.checkin') ? 'bg-red-600 text-white' : 'text-white hover:bg-white/5' }}">Check-In</a></li>
                     <li><div class="border-t border-white/10 my-2"></div></li>
                     <li>
                         <a href="{{ route('admin.dashboard') }}" class="block w-full py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold">
