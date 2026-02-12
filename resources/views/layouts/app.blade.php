@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gym Majapahit - @yield('title', 'Beranda')</title>
+    <title>Fitness Kembar - @yield('title', 'Beranda')</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,11 +39,11 @@
             <div class="flex flex-nowrap items-center justify-between px-4 py-3 md:px-6">
                 
                 <a href="{{ route('home') }}" class="flex items-center space-x-2 rtl:space-x-reverse group shrink-0">
-                    <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white transform group-hover:rotate-12 transition">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
-                    </div>
+                    <img src="{{ asset('images/logo.JPG') }}" 
+                        alt="Logo Fitness Kembar" 
+                        class="w-10 h-10 object-contain rounded-full transform group-hover:rotate-12 transition duration-300">
                     <span class="self-center text-lg md:text-xl font-bold whitespace-nowrap text-white uppercase tracking-wider font-oswald">
-                        MAJAPAHIT<span class="text-red-600">GYM</span>
+                        Fitness <span class="text-red-600">Kembar</span>
                     </span>
                 </a>
                 
@@ -103,8 +103,8 @@
 
     <footer class="bg-black py-10 border-t border-white/10">
         <div class="max-w-screen-xl mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold font-oswald text-white mb-4 uppercase">Majapahit<span class="text-red-600">Gym</span></h2>
-            <p class="text-gray-500 text-sm mb-6">Membangun otot dan mental baja sejak 2024.</p>
+            <h2 class="text-2xl font-bold font-oswald text-white mb-4 uppercase">Fitness <span class="text-red-600">Kembar</span></h2>
+            <p class="text-gray-500 text-sm mb-6">Didirikan sejak 2022.</p>
             <div class="text-gray-600 text-xs">
                 &copy; {{ date('Y') }} Fitness Kembar Project. All rights reserved.
             </div>

@@ -9,11 +9,21 @@ use Carbon\Carbon;
 
 class MemberController extends Controller
 {
-    // 1. Tampilkan Daftar Member
-    public function index()
+    public function index(Request $request)
     {
-        // Ambil data member terbaru, urutkan dari yang paling baru daftar
-        $members = Member::latest()->get();
+        // Ambil kata kunci pencarian dari input
+        $search = $request->input('search');
+
+        // Query dengan logika pencarian
+        $members = Member::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('name', 'like', "%{$search}%")
+                            ->orWhere('phone', 'like', "%{$search}%");
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString(); // Agar saat pindah halaman (page 2), hasil pencarian tidak hilang
+
         return view('admin.members.index', compact('members'));
     }
 

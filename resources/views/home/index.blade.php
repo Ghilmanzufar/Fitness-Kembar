@@ -14,15 +14,15 @@
         <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-16">
             <div data-aos="fade-down">
                 <span class="px-4 py-1 border border-red-600/50 rounded-full text-red-500 text-sm tracking-widest uppercase font-semibold bg-red-900/10 backdrop-blur-sm">
-                    Est. 2024
+                    Est. 2022
                 </span>
             </div>
             <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 uppercase leading-tight mt-6 font-oswald" data-aos="zoom-in" data-aos-delay="200">
-                Bukan Tempat <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-600">Selfie</span>,<br>
-                Ini Tempat <span class="text-white">Latihan.</span>
+                Datang <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-600">Niat</span>,<br>
+                Pulang <span class="text-white">Berkeringat.</span>
             </h1>
             <p class="text-gray-300 text-lg md:text-xl mb-10 max-w-3xl mx-auto font-light" data-aos="fade-up" data-aos-delay="400">
-                Alat besi tua yang mantap, suasana kekeluargaan, dan harga yang masuk akal. 
+                Alat yang mantap, suasana kekeluargaan, dan harga yang masuk akal. 
                 Tanpa kontrak ribet, cukup bayar dan angkat beban.
             </p>
             
@@ -99,7 +99,6 @@
                     <ul class="space-y-3 text-gray-300 mb-8 text-sm">
                         <li class="flex items-center gap-3"><span class="text-red-500">✓</span> Tanpa Biaya Admin</li>
                         <li class="flex items-center gap-3"><span class="text-red-500">✓</span> Akses 30 Hari Full</li>
-                        <li class="flex items-center gap-3"><span class="text-red-500">✓</span> Prioritas Loker</li>
                         <li class="flex items-center gap-3"><span class="text-red-500">✓</span> Bebas Konsultasi</li>
                     </ul>
                 </div>
@@ -142,8 +141,8 @@
                     <div class="mb-4 inline-block p-3 bg-red-600 rounded-full animate-bounce">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-2">LOKASI MARKAS</h3>
-                    <p class="text-gray-300 mb-6">Jln. Majapahit No. 45, Gym City</p>
+                    <h3 class="text-2xl font-bold text-white mb-2">LOKASI GYM</h3>
+                    <p class="text-gray-300 mb-6">Kirana Cikarang Blok G2 NO. 02 Perumahan Kirana Cikarang Blok G2 No 2, Telagamurni, Kec. Cikarang Bar., Kabupaten Bekasi, Jawa Barat 17520</p>
                     <a href="https://maps.app.goo.gl/QynuVFG2NXBG9ieJ9?g_st=ipc" target="_blank" class="px-6 py-2 border border-white text-white hover:bg-white hover:text-black transition uppercase font-bold text-sm tracking-widest">
                         Buka Google Maps
                     </a>
@@ -161,7 +160,6 @@
             </h2>
             <p class="text-xl text-gray-400 mb-10 leading-relaxed font-light">
                 Tenang, tidak perlu malu bertanya. Kami sediakan panduan digital lengkap untuk setiap alat. 
-                Scan barcode di alat atau buka menu panduan.
             </p>
             <a href="{{ route('guide') }}" class="inline-block px-10 py-4 bg-white text-slate-900 font-bold rounded-full hover:bg-gray-200 transition transform hover:-translate-y-1 shadow-xl">
                 BUKA PANDUAN LATIHAN

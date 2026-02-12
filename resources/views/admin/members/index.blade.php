@@ -3,13 +3,29 @@
 @section('content')
     <div x-data="{ renewModal: false, memberId: null, memberName: '' }">
 
-        <div class="flex justify-between items-center mb-6">
-            <h2 class="text-3xl font-bold text-white font-oswald uppercase">Data Member</h2>
-            <a href="{{ route('members.create') }}" class="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold shadow-lg transition flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                Tambah Member
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+        <h2 class="text-3xl font-bold text-white font-oswald uppercase">Manajemen Member</h2>
+        
+        <div class="flex flex-col md:flex-row gap-3 w-full md:w-auto">
+            <form action="{{ route('members.index') }}" method="GET" class="relative w-full md:w-64">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                </div>
+                <input type="text" 
+                    name="search" 
+                    value="{{ request('search') }}"
+                    class="block w-full p-2.5 pl-10 text-sm text-white border border-gray-600 rounded-lg bg-slate-800 focus:ring-red-500 focus:border-red-500 placeholder-gray-400" 
+                    placeholder="Cari Nama / No. HP..." 
+                    autocomplete="off">
+            </form>
+
+            <a href="{{ route('members.create') }}" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg shadow-red-900/50 transition transform hover:scale-105 flex items-center justify-center whitespace-nowrap">
+                + Tambah Member
             </a>
         </div>
+    </div>
 
         @if(session('success'))
             <div class="bg-green-600/20 border border-green-500 text-green-400 px-4 py-3 rounded mb-6">

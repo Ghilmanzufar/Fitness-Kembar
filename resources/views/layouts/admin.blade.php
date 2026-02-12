@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Majapahit Gym</title>
+    <title>Admin - Fitness Kembar</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     
@@ -19,7 +19,7 @@
 <body class="bg-slate-900 text-white antialiased" x-data="{ sidebarOpen: true }">
 
     <div class="md:hidden flex items-center justify-between bg-slate-950 p-4 border-b border-white/10 sticky top-0 z-50">
-        <span class="font-oswald text-xl font-bold tracking-wider">MAJAPAHIT<span class="text-red-600">ADMIN</span></span>
+        <span class="font-oswald text-xl font-bold tracking-wider">Fitness Kembar <span class="text-red-600">ADMIN</span></span>
         <button @click="sidebarOpen = !sidebarOpen" class="text-white">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
@@ -32,7 +32,7 @@
             
             <div class="h-16 flex items-center justify-center border-b border-white/10">
                 <a href="{{ route('home') }}" class="font-oswald text-2xl font-bold tracking-wider hover:text-red-500 transition">
-                    MAJAPAHIT<span class="text-red-600">GYM</span>
+                    Fitness Kembar <span class="text-red-600">GYM</span>
                 </a>
             </div>
 
